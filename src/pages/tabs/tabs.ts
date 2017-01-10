@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../lists/lists';
-import { AboutPage } from '../groups/groups';
-import { ContactPage } from '../contact/contact';
+import { ListsPage } from '../lists/lists';
+import { GroupsPage } from '../groups/groups';
+import {NavParams} from "ionic-angular";
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
-  listsRoot: any = HomePage;
-  groupsRoot: any = AboutPage;
 
-  constructor() {
+  listsRoot: any = ListsPage;
+  groupsRoot: any = GroupsPage;
 
+  uid:string;
+
+  constructor(private _navParams:NavParams) {
+    this.uid = this._navParams.data;
   }
 }
