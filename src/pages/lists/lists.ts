@@ -1,11 +1,13 @@
+import 'rxjs/add/operator/map';
 import { Component } from '@angular/core';
 import * as Rx from "rxjs/Rx";
 import {NavController, NavParams} from 'ionic-angular';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 
-
-interface Group {
-  $key:string;
+interface ItemsGroup {
+  name:string;
   items: string[];
 }
 
@@ -15,7 +17,7 @@ interface Group {
 })
 export class ListsPage {
 
-  items:Group[];
+  itemsGroups:Rx.Observable<ItemsGroup[]>;
 
   constructor(navParams:NavParams, af:AngularFire) {
 
@@ -24,20 +26,25 @@ export class ListsPage {
     const userGroups:Rx.Observable<string[]> =
       af.database
         .list(`/users/${uid}/groups`)
-        .map(afGroups => afGroups.map(afGroup => afGroup.$value));
+        .map(groups => groups.map( group => group.$value));
 
-    const fullGroups:FirebaseListObservable<Group[]> =
+    const fullGroups:FirebaseListObservable<string[][]> =
       af.database
         .list('/groups');
 
-    Rx.Observable
+    this.itemsGroups = Rx.Observable
       .combineLatest(userGroups, fullGroups, this._groupsCombiner)
-      .subscribe((groups:Group[]) => {
-        this.items = [].concat.apply([], groups);
+      .map(groups => {
+        return groups.map(group => {
+          return {
+            name: group.$key,
+            items: group
+          };
+        });
       });
   }
 
-  private _groupsCombiner = (userGroups:string[], fullGroups:Group[]):Group[] => {
+  private _groupsCombiner = (userGroups:string[], fullGroups:any[]):any[] => {
     return fullGroups.filter(group => userGroups.indexOf(group.$key) >= 0);
   };
 

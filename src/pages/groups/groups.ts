@@ -16,8 +16,8 @@ export class GroupsPage {
 
     const uid:string = navParams.data;
 
-    this.groups = af.database
-      .object('/users/'+uid)
+    this.groups = (<any>af.database
+      .object('/users/'+uid))
       .map(user => user.groups);
 
     this.newGroupUpdates
