@@ -5,16 +5,17 @@ import { GroupsPage } from '../pages/groups/groups';
 import { ListsPage } from '../pages/lists/lists';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from "../pages/login/login";
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 import { getFirebaseConfig } from "./FirebaseConfig";
-
+import {AddItemPage} from "../pages/add-item/add-item";
 @NgModule({
   declarations: [
     MyApp,
     GroupsPage,
     ListsPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    AddItemPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -29,7 +30,8 @@ import { getFirebaseConfig } from "./FirebaseConfig";
     GroupsPage,
     ListsPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    AddItemPage
   ],
   providers: []
 })

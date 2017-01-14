@@ -20,7 +20,7 @@
     "@ionic/app-scripts": "^1.0.0",
     "@ionic/storage": "*",
     "angularfire2": "^2.0.0-beta.7-pre",
-    "firebase": "*",
+    "firebase": "^3.6.5",
     "ionic-angular": "2.0.0-rc.4",
     "ionic-native": "2.2.11",
     "ionicons": "*",
@@ -38,7 +38,15 @@
     "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    {
+      "id": "cordova-plugin-facebook4",
+      "locator": "cordova-plugin-facebook4",
+      "variables": {
+        "APP_ID": "1589649918010663",
+        "APP_NAME": "iWant Login"
+      }
+    }
   ],
   "cordovaPlatforms": [
     "ios",

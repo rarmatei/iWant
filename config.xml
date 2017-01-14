@@ -28,4 +28,14 @@
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
+  <plugin name="cordova-plugin-facebook4" spec="~1.7.1">
+    <variable name="APP_ID" value="1589649918010663"/>
+    <variable name="APP_NAME" value="iWant Login"/>
+  </plugin>
+  <allow-navigation href="http://192.168.0.151:8100"/>
+
+  <!-- Don't block any requests -->
+  <access origin="*" />
+  <!-- or -->
+  <access origin="https://*.googleapis.com" />
 </widget>

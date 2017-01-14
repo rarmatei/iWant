@@ -8,9 +8,20 @@
 
 
 <ion-content padding>
-  <button (click)="login()" ion-button full icon-left>
-    <ion-icon name="home"></ion-icon>
-    Facebook Login
-  </button>
+  <ion-card>
+    <img src="assets/cat_running.gif">
+    <ion-card-content>
+      <ion-card-title>
+        Welcome!
+      </ion-card-title>
+      <p>
+        Please sign in using Facebook
+      </p>
+      <button (click)="login()" ion-button full icon-left>
+        <ion-icon name="key"></ion-icon>
+        Facebook Login
+      </button>
+    </ion-card-content>
 
+  </ion-card>
 </ion-content>

@@ -6,49 +6,39 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
   <ion-card>
-
+    <ion-card-header>
+      Your groups
+    </ion-card-header>
     <ion-card-content>
-
-      <ion-card-title>
-        Your current groups
-      </ion-card-title>
-
       <ion-list>
-        <ion-item *ngFor="let groupName of (groups | async)">
-          {{groupName}}
+        <ion-item *ngFor="let group of (groups | async)">
+          {{group.value}}
+          <button ion-button item-right (click)="removeGroup(group.key)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
         </ion-item>
       </ion-list>
-
-      <ion-card>
-        <ion-card-content>
-          <ion-list>
-
-            <ion-card-header>
-              Add new groups
-            </ion-card-header>
-
-            <ion-item>
-              <ion-label floating>Group name</ion-label>
-              <ion-input [(ngModel)]="newGroup" type="text"></ion-input>
-            </ion-item>
-
-            <div padding>
-              <button ion-button
-                      color="primary"
-                      block
-                      (click)="addNewGroup()">Add</button>
-            </div>
-
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
-
-
     </ion-card-content>
-
   </ion-card>
 
+
+  <ion-card>
+    <ion-card-header>
+      Add new groups
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>
+          <ion-label floating>Group name</ion-label>
+          <ion-input [(ngModel)]="newGroup" type="text"></ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button
+                  color="primary"
+                  block
+                  (click)="addNewGroup()">Add</button>
+        </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

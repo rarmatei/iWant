@@ -4,11 +4,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list *ngFor="let itemsGroup of (itemsGroups | async)">
-    <ion-list-header>
+<ion-content>
+  <ion-item-group *ngFor="let itemsGroup of (itemsGroups | async)">
+    <ion-item-divider color="light">
       {{itemsGroup.name}}
-    </ion-list-header>
-    <ion-item *ngFor="let item of itemsGroup.items">{{item}}</ion-item>
-  </ion-list>
+      <button ion-button outline item-right icon-right (click)="addItemToGroup(itemsGroup)">
+        ADD ITEM
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-item-divider>
+    <ion-item *ngFor="let item of itemsGroup.items">
+      {{item.value}}
+      <button ion-button item-right (click)="removeItem(item.key, itemsGroup.name)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-item-group>
 </ion-content>
